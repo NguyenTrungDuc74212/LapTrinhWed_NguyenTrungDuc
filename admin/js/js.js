@@ -5,9 +5,3 @@
        $('.truyen').toggleClass('add');
     });
   });
-
-  $(document).ready(function() {
-    $('.item-chuyenmuc').click(function() {
-         $('.chuyenmuc').addClass('chuyenmuc-add');
-    });
-  });
