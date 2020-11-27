@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TheloaiController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,11 +13,8 @@ use App\Http\Controllers\TheloaiController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::group(['prefix'=>'admin'],function(){
+	Route::get('login',[LoginController::class,'load_login']);
 	Route::group(['prefix'=>'theloai'],function(){
 		Route::get('danhsach',[TheloaiController::class,'list_category'])->name('list_cate');
 		Route::get('themmoi',[TheloaiController::class,'load_add']);
