@@ -21,19 +21,19 @@
                        <span class="sr-only">Toggle Dropdown</span>
                      </button>
                      <div class="dropdown-menu">
-                       <a class="dropdown-item" href="#">Action</a>
-                       <a class="dropdown-item" href="#">Another action</a>
-                       <a class="dropdown-item" href="#">Something else here</a>
-                       <div class="dropdown-divider"></div>
-                       <a class="dropdown-item" href="#">Separated link</a>
+
+                       <a class="dropdown-item @if(Session('paginate')==2) {{'my-disable'}} @endif" href="admin/theloai/phantrang/2">2 dòng</a>
+                       <a class="dropdown-item @if(Session('paginate')==4) {{'my-disable'}} @endif" href="admin/theloai/phantrang/4">4 dòng</a>
+                       <a class="dropdown-item @if(Session('paginate')==6) {{'my-disable'}} @endif" href="admin/theloai/phantrang/6">6 dòng</a>
+                        <a class="dropdown-item @if(Session('paginate')==8) {{'my-disable'}} @endif" href="admin/theloai/phantrang/8">8 dòng</a>
                      </div>
                    </div>                 
                  </div> 
                   <div class="col-lg-6 text-right">
                 
-                     
+                     <label><b>Tìm kiếm</b></label>
                       <input type="text" name="search" id="search" placeholder="Tên thể loại">
-                       <button class="btn btn-success btn-search"><i class="fas fa-search"></i></button>
+              
                
                 </div> 
                </div> <!-- end row2 -->
@@ -52,11 +52,12 @@
        <tr> 
         <th class="text-center"><em class="fa fa-cog"></em>
         </th> 
-        <th class="hidden-xs">STT</th> 
-        <th>Tên</th> 
+        <th class="hidden-xs">ID</th> 
+        <th>TÊN THỂ LOẠI</th> 
        </tr> 
       </thead> 
       <tbody> 
+     
     @foreach($theloai as $tl)
      <tr>
        <td align="center"><a class="btn btn-primary" href="admin/theloai/sua/{{$tl->id}}"><em class="fas fa-pencil-alt"></em></a> <a href="admin/theloai/xoa/{{$tl->id}}" class="btn btn-danger" onclick="return confirm('Có thể bạn sẽ xóa toàn bộ truyện thuộc thể loại này ?')"><em class="fa fa-trash"></em></a>
@@ -64,6 +65,7 @@
        <td class="hidden-xs">{{$tl->id}}</td> 
        <td>{{$tl->tentheloai}}</td> 
       </tr> 
+    
       @endforeach
      </tbody></table> 
     </div> 

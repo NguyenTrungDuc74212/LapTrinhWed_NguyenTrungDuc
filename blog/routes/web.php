@@ -25,5 +25,6 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::post('sua/{id}',[TheloaiController::class,'post_edit']);
 		Route::get('xoa/{id}',[TheloaiController::class,'delete_cate']);
 		Route::get('search',[TheloaiController::class,'search_live'])->name('search');
+		Route::get('phantrang/{soluong}',[TheloaiController::class,'changePagi']);
 	});
 });

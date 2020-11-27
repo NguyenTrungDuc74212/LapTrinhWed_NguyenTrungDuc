@@ -106,3 +106,8 @@ input.form-control {
 button.btn.btn-success {
     padding: 3px 12px;
 }
+.my-disable {
+  color: white;
+    pointer-events: none;
+    background-color: #8080809e;
+}

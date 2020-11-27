@@ -4,12 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\theloai;
+use Illuminate\Support\Facades\Session;
 class TheloaiController extends Controller
 {
-    //
+     public function __construct()
+    {
+       if(!Session::has('paginate'))
+       {
+       		Session::put('paginate', 2);
+       }
+    }
+    public function changePagi($soluong)
+    {	
+    	
+    	
+    	Session::put('paginate', $soluong);
+    	return redirect()->route('list_cate');
+    }
       public function list_category()
     {
-    	$theloai=theloai::paginate(2);
+    	
+    	$theloai=theloai::paginate(Session::get('paginate'));
     	return view('admin.theloai.list',['theloai'=>$theloai]);
     }
     public function load_add()
@@ -67,7 +82,7 @@ class TheloaiController extends Controller
     		$data='';
     		$links='';
     		$cout_page='';
-    		$i=1;
+    		
     		$query=$req->get('query');
     		if($query!='')
     		{
@@ -77,12 +92,12 @@ class TheloaiController extends Controller
     			{
     				foreach ($theloai as $tl) {
     					$data.='<tr>
-      							 	<td align="center"><a class="btn btn-primary" href="admin/theloai/sua/'.$tl->id.'"><em class="fas fa-pencil-alt"></em></a> <a href="admin/theloai/xoa/'.$tl->id.'" class="btn btn-danger" onclick="return confirm("Có thể bạn sẽ xóa toàn bộ truyện thuộc thể loại này ?")"><em class="fa fa-trash"></em></a>
+      							 	<td align="center"><a class="btn btn-primary" href="admin/theloai/sua/'.$tl->id.'"><em class="fas fa-pencil-alt"></em></a> <a href="admin/theloai/xoa/'.$tl->id.'" class="btn btn-danger" onclick="return confirm(\'Có thể bạn sẽ xóa toàn bộ truyện thuộc thể loại này ?\')"><em class="fa fa-trash"></em></a>
       								 </td> 
-       								<td class="hidden-xs">'.$i.'</td> 
+       								<td class="hidden-xs">'.$tl->id.'</td> 
        								<td>'.$tl->tentheloai.'</td> 
       							</tr>' ;
-      							$i++;
+      							
     				}
     			$cout_page='Tìm thấy '.$theloai->count().' kết quả';
     		}else{
