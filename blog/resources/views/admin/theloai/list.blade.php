@@ -30,10 +30,11 @@
                    </div>                 
                  </div> 
                   <div class="col-lg-6 text-right">
-                    <form>
-                      <label>Tìm kiếm</label>
-                      <input type="text" name="">
-                    </form>
+                
+                     
+                      <input type="text" name="search" id="search" placeholder="Tên thể loại">
+                       <button class="btn btn-success btn-search"><i class="fas fa-search"></i></button>
+               
                 </div> 
                </div> <!-- end row2 -->
               
@@ -41,6 +42,11 @@
   <div class="col-lg-12"> 
    <div class="card"> 
     <div class="card-body"> 
+      @if(session('thongbao2'))
+      <div class="alert alert-success">
+        {{session('thongbao2')}}
+      </div>
+      @endif
      <table class="table table-striped table-bordered table-list"> 
       <thead> 
        <tr> 
@@ -53,7 +59,7 @@
       <tbody> 
     @foreach($theloai as $tl)
      <tr>
-       <td align="center"><a class="btn btn-primary"><em class="fas fa-pencil-alt"></em></a> <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+       <td align="center"><a class="btn btn-primary" href="admin/theloai/sua/{{$tl->id}}"><em class="fas fa-pencil-alt"></em></a> <a href="admin/theloai/xoa/{{$tl->id}}" class="btn btn-danger" onclick="return confirm('Có thể bạn sẽ xóa toàn bộ truyện thuộc thể loại này ?')"><em class="fa fa-trash"></em></a>
        </td> 
        <td class="hidden-xs">{{$tl->id}}</td> 
        <td>{{$tl->tentheloai}}</td> 
@@ -63,8 +69,8 @@
     </div> 
     <div class="panel-footer card bg-light"> 
      <div class="row"> 
-      <div class="col col-xs-4 text-left"><p>Hiển thị {{$theloai->currentPage()}} của {{$theloai->lastPage()}}</p></div> 
-      <div class="col col-xs-8 text-right"> 
+      <div class="col col-xs-4 text-left"><p id="count_page">Hiển thị {{$theloai->currentPage()}} của {{$theloai->lastPage()}}</p></div> 
+      <div class="col col-xs-8 text-right pagin"> 
         {{$theloai->links()}}
       </div> 
      </div> 
@@ -72,4 +78,37 @@
    </div> 
   </div> 
 </div>
+@endsection
+@section('script')
+<script>
+  $(document).ready(function(){
+    search_live();
+    function search_live(query='')
+  {
+      $.ajax({
+        url:"{{route('search')}}",
+        method:'GET',
+        data:{query:query},
+        dataType:'json',
+        success:function(data)
+        {
+          $('tbody').html(data.data_table);
+          $('#count_page').html(data.count_page);
+          $('.pagin').html(data.links);
+        }
+       })
+      
+  }
+  $(document).on('keyup','#search',function(){
+    if($('#search').val()=='')
+      {
+        location.reload();
+      }else{
+        search_live($('#search').val());
+      }
+    
+  });
+});
+  
+</script>
 @endsection

@@ -103,4 +103,6 @@ input.form-control {
   padding: 10px 0px;
   margin: 20px 0px;
 }
-
+button.btn.btn-success {
+    padding: 3px 12px;
+}

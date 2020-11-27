@@ -7,7 +7,7 @@
                   Bảng điều khiển</a></li>
 
                   <li class="item-chuyenmuc"><a href="" class="btn btn-default"><i class="far fa-folder-open"></i>
-                  Chuyên mục</a><i class="fas fa-caret-down"></i>
+                  Chuyên mục</a>
                     <div class="danhsach2">
                    <ul>
                      <li style="border: 0"><a href="admin/theloai/danhsach">Thể loại</a></li>

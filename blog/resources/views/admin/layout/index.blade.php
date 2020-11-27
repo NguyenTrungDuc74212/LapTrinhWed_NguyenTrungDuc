@@ -33,5 +33,6 @@
 </div>
 </div>
 <script type="text/javascript" src="{{asset('public_admin/js/js.js')}}"></script>
+@yield('script')
 </body>
 </html>

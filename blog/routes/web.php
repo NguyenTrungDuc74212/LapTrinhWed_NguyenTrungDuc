@@ -18,8 +18,12 @@ Route::get('/', function () {
 });
 Route::group(['prefix'=>'admin'],function(){
 	Route::group(['prefix'=>'theloai'],function(){
-		Route::get('danhsach',[TheloaiController::class,'list_category']);
+		Route::get('danhsach',[TheloaiController::class,'list_category'])->name('list_cate');
 		Route::get('themmoi',[TheloaiController::class,'load_add']);
 		Route::post('themmoi',[TheloaiController::class,'post_add']);
+		Route::get('sua/{id}',[TheloaiController::class,'load_edit']);
+		Route::post('sua/{id}',[TheloaiController::class,'post_edit']);
+		Route::get('xoa/{id}',[TheloaiController::class,'delete_cate']);
+		Route::get('search',[TheloaiController::class,'search_live'])->name('search');
 	});
 });
