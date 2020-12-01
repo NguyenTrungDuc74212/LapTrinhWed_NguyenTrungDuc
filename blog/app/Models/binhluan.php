@@ -11,14 +11,14 @@ class binhluan extends Model
     protected $table="binhluan";
     protected function truyen()
     {
-    	return $this->belongsTo('App\Models\truyen.php','id_truyen','id');
+    	return $this->belongsTo('App\Models\truyen','id_truyen','id');
     }
     protected function chuong()
     {
-    	return $this->belongsTo('App\Models\chuong.php','id_chuong','id');
+    	return $this->belongsTo('App\Models\chuong','id_chuong','id');
     }
     protected function user()
     {
-    	return $this->belongsTo('App\Models\User.php','id_user','id');
+    	return $this->belongsTo('App\Models\User','id_user','id');
    	}
 }

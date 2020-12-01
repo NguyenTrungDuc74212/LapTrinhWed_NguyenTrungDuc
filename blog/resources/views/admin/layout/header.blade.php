@@ -7,8 +7,11 @@
           <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> 
-                  Admin<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{route('logout')}}"><i class="fas fa-sign-out-alt"></i> 
+                  @if(Session::has('admin'))
+                    {{session('admin')['name']}}
+                  @endif
+                  <span class="sr-only">(current)</span></a>
               </li>
             </ul>
           </div>

@@ -11,6 +11,6 @@ class theloai extends Model
     protected $table="theloai";
     protected function theloaitruyen()
     {
-    	return $this->hasMany('App\Models\theloaitruyen.php','theloaicha','id');
+    	return $this->hasMany('App\Models\theloaitruyen','theloaicha','id');
     }
 }

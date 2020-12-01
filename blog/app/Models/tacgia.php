@@ -11,6 +11,6 @@ class tacgia extends Model
     protected $table="tacgia";
     protected function  truyen()
     {
-    	return $this->hasMany('App\Models\truyen.php','id_tacgia','id');
+    	return $this->hasMany('App\Models\truyen','id_tacgia','id');
     }
 }

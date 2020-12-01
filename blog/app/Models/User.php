@@ -43,14 +43,14 @@ class User extends Authenticatable
     ];
     protected function daxem()
     {
-        return $this->hasMany('App\Models\daxem.php','id_user','id');
+        return $this->hasMany('App\Models\daxem','id_user','id');
     }
     protected function truyen()
     {
-        return $this->hasMany('App\Models\truyen.php','user_id','id');
+        return $this->hasMany('App\Models\truyen','user_id','id');
     }
     protected function binhluan()
     {
-        return $this->hasMany('App\Models\binhluan.php','id_user','id');
+        return $this->hasMany('App\Models\binhluan','id_user','id');
     }
 }

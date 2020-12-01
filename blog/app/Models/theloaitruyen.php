@@ -11,10 +11,10 @@ class theloaitruyen extends Model
     protected $table="theloaitruyen";
     protected function theloai()
     {
-    	return $this->belongsTo('App\Models\theloai.php','theloaicha','id');
+    	return $this->belongsTo('App\Models\theloai','theloaicha','id');
     }
     protected function truyen()
     {
-    	return $this->hasMany('App\Models\truyen.php','id_theloaitruyen','id');
+    	return $this->hasMany('App\Models\truyen','id_theloaitruyen','id');
     }
 }

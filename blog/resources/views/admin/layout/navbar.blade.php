@@ -11,7 +11,7 @@
                     <div class="danhsach2">
                    <ul>
                      <li style="border: 0"><a href="admin/theloai/danhsach">Thể loại</a></li>
-                     <li style="border: 0"><a href="">Thể loại truyện</a></li>
+                     <li style="border: 0"><a href="admin/theloaitruyen/danhsach">Thể loại truyện</a></li>
                    </ul>
                   </div>
                 </li>

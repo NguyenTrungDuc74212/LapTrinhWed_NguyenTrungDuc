@@ -16,15 +16,20 @@
       <div class="col-md-4"></div>
       <div class="col-md-4 formdn">
         <h3 class="text-center text-white">ADMIN</h3>
-        <form method="post" action="xulydangnhap.php">
+        <form method="post" action="{{route('post_login')}}">
           <div class="form-group">
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" class="form-control">
           </div>
           <div class="form-group">
             <label class="pass">Password</label>
-            <input type="Password" name="password" id="pass" class="form-control">
-            <small>Đăng nhập thất bại!</small>
+            <input type="Password" name="pass" id="pass" class="form-control">
+            <small>
+              @if(session('thatbai'))
+                {{session('thatbai')}}
+              @endif
+            </small>
           </div>
           <button class="btn btn-success float-right" type="submit">Login</button>
          

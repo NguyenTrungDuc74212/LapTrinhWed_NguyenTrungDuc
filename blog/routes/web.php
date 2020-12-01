@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TheloaiController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TheLoaiTruyenController;
+use App\Http\Controllers\PhanTrangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +15,11 @@ use App\Http\Controllers\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix'=>'admin'],function(){
-	Route::get('login',[LoginController::class,'load_login']);
+Route::get('admin/logout',[LoginController::class,'logout'])->name('logout');
+Route::post('admin/login',[LoginController::class,'post_login'])->name('post_login');
+Route::get('admin/login',[LoginController::class,'load_login'])->name('login_admin');
+Route::group(['prefix'=>'admin','middleware' =>'AdminRole'],function(){
+	Route::get('phantrang/{page_name}/{amount}',[PhanTrangController::class,'changePagi']);
 	Route::group(['prefix'=>'theloai'],function(){
 		Route::get('danhsach',[TheloaiController::class,'list_category'])->name('list_cate');
 		Route::get('themmoi',[TheloaiController::class,'load_add']);
@@ -22,7 +27,15 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('sua/{id}',[TheloaiController::class,'load_edit']);
 		Route::post('sua/{id}',[TheloaiController::class,'post_edit']);
 		Route::get('xoa/{id}',[TheloaiController::class,'delete_cate']);
-		Route::get('search',[TheloaiController::class,'search_live'])->name('search');
-		Route::get('phantrang/{soluong}',[TheloaiController::class,'changePagi']);
+		Route::get('search',[TheloaiController::class,'search_live'])->name('search_cate');
+	});
+	Route::group(['prefix'=>'theloaitruyen'],function(){
+		Route::get('danhsach',[TheLoaiTruyenController::class,'list_category_story']);
+		Route::get('themmoi',[TheLoaiTruyenController::class,'load_add']);
+		Route::post('themmoi',[TheLoaiTruyenController::class,'post_add'])->name('post-add-category-story');
+		Route::get('sua/{id}',[TheLoaiTruyenController::class,'load_edit']);
+		Route::post('sua/{id}',[TheLoaiTruyenController::class,'post_edit']);
+		Route::get('xoa/{id}',[TheLoaiTruyenController::class,'delete_cate_story']);
+		Route::get('search',[TheLoaiTruyenController::class,'search_live'])->name('search_cate_story');
 	});
 });

@@ -11,10 +11,10 @@ class chuong extends Model
     protected $table="chuong";
     protected function truyen()
     {
-    	return $this->belongsTo('App\Models\truyen.php','id_truyen','id');
+    	return $this->belongsTo('App\Models\truyen','id_truyen','id');
     }
     protected function binhluan()
     {
-    	return $this->hasMany('App\Models\binhluan.php','id_chuong','id');
+    	return $this->hasMany('App\Models\binhluan','id_chuong','id');
     }
 }

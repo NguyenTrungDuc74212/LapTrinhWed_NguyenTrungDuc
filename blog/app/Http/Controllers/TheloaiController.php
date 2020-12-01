@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\theloai;
 use Illuminate\Support\Facades\Session;
+
 class TheloaiController extends Controller
 {
+    //phan construct nay sẽ để trong controller của page được load đầu tiên
+    // để khởi tạo session phân trang luôn
      public function __construct()
     {
        if(!Session::has('paginate'))
@@ -14,13 +17,7 @@ class TheloaiController extends Controller
        		Session::put('paginate', 2);
        }
     }
-    public function changePagi($soluong)
-    {	
-    	
-    	
-    	Session::put('paginate', $soluong);
-    	return redirect()->route('list_cate');
-    }
+  
       public function list_category()
     {
     	
@@ -35,11 +32,11 @@ class TheloaiController extends Controller
     {
     	$this->validate($req,
     	[
-    		'tentheloai'=>'required|min:10|max:50|unique:theloai'
+    		'tentheloai'=>'required|min:5|max:50|unique:theloai'
     	],
     	[
     		'tentheloai.required'=>"Bạn chưa nhập tên thể loại!",
-    		'tentheloai.min'=>"Tên thể loại phải lớn hơn 10 ký tự !",
+    		'tentheloai.min'=>"Tên thể loại phải lớn hơn 5 ký tự !",
     		'tentheloai.max'=>"Tên thể loại phải nhỏ hơn 50 ký tự !",
     		'tentheloai.unique'=>"Tên thể loại đã tồn tại !"
     	]);
@@ -58,11 +55,11 @@ class TheloaiController extends Controller
     {
     	$this->validate($req,
     	[
-    		'tentheloai'=>'required|min:10|max:50|unique:theloai'
+    		'tentheloai'=>'required|min:5|max:50|unique:theloai'
     	],
     	[
     		'tentheloai.required'=>"Bạn chưa nhập tên thể loại!",
-    		'tentheloai.min'=>"Tên thể loại phải lớn hơn 10 ký tự !",
+    		'tentheloai.min'=>"Tên thể loại phải lớn hơn 5 ký tự !",
     		'tentheloai.max'=>"Tên thể loại phải nhỏ hơn 50 ký tự !",
     		'tentheloai.unique'=>"Tên thể loại đã tồn tại !"
     	]);
@@ -76,6 +73,7 @@ class TheloaiController extends Controller
     {
     	theloai::destroy($id);
     	return redirect("admin/theloai/danhsach")->with('thongbao2','Xóa thành công!');
+
     }
     public function search_live(Request $req)
     {
