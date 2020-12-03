@@ -1,3 +1,4 @@
+/*slide down chuyên mục*/
   $(document).ready(function() {
     $('.danhsach li').slideDown();
     $('.truyen').click(function() {
@@ -5,9 +6,18 @@
        $('.truyen').toggleClass('add');
     });
   });
+/*end chuyenmuc*/
 
-  // $(document).ready(function() {
-  //   $('.item-chuyenmuc').click(function() {
-  //        $('.chuyenmuc').addClass('chuyenmuc-add');
-  //   });
-  // });
+  /*hiệu ứng side bar*/
+  $(document).ready(function() {
+    $('.nut').click(function() {
+      $('.side-bar').animate({'min-width':'toggle'});
+      $('.side-bar').next().next().toggleClass('hieuung');
+    });
+  });
+
+  /*nhúng ckeditor*/
+  CKEDITOR.replace( 'noidungtruyen', {
+    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
+} );

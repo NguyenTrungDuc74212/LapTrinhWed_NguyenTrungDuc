@@ -3,7 +3,28 @@
     padding: 0;
     box-sizing: border-box;
     background-color: #ecebe8;
+    scroll-behavior: smooth;
   }
+  .nut {
+    position: absolute;
+    left: 19%;
+    
+  }
+  #noidung{
+    transition: all 0.3s ease-in-out;
+  }
+.hieuung{
+  margin:0px -12% !important;
+  transition: all 0.3s ease-in-out;
+}
+   .nut i{
+    color: white;
+    font-size: 24px;
+   }
+   .an{
+    left: -1000px;
+    /*transition: all 0.3s ease-in-out ;*/
+   }
   .menu {
  
     background-color: rgb(13 141 243 / 0.8);
@@ -20,6 +41,7 @@
     top: 0;
     min-width: 293px;
     max-width: 293px;
+    overflow: auto;
     z-index: 100;
 }
 a.tieude{
@@ -71,6 +93,7 @@ a.tieude{
     background-color: #e8e5e5;
     height: 100vh;
     padding: 10px 36px;
+
     display: block;
 }
 /*.chuyenmuc-add{
@@ -117,3 +140,8 @@ button.btn.btn-success.float-lg-right {
     margin: 0px 5px;
 }
 
+/*bảng điều khiển*/
+.thongtin-thongke {
+    margin: 15px 0px;
+    padding: 20px;
+}
