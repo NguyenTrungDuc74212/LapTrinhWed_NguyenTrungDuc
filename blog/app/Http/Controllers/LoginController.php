@@ -20,7 +20,7 @@ class LoginController extends Controller
     }
     private static function get_data($username,$pass)
     {
-    	$user=User::where('name','=',$username)->orWhere('email','=',$username)->where('level','=',2)->first();
+    	$user=User::where('name','=',$username)->where('level','=',2)->first();
     	if(!$user) return false;
     	//Hash::check($pass, $user->password)
     	if($pass== $user->password)

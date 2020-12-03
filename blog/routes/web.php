@@ -5,6 +5,8 @@ use App\Http\Controllers\TheloaiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TheLoaiTruyenController;
 use App\Http\Controllers\PhanTrangController;
+use App\Http\Controllers\TacGiaController;
+use App\Http\Controllers\TruyenController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,5 +39,21 @@ Route::group(['prefix'=>'admin','middleware' =>'AdminRole'],function(){
 		Route::post('sua/{id}',[TheLoaiTruyenController::class,'post_edit']);
 		Route::get('xoa/{id}',[TheLoaiTruyenController::class,'delete_cate_story']);
 		Route::get('search',[TheLoaiTruyenController::class,'search_live'])->name('search_cate_story');
+	});
+	Route::group(['prefix'=>'tacgia'],function(){
+		Route::get('danhsach',[TacGiaController::class,'load_list']);
+		Route::get('themmoi',[TacGiaController::class,'load_add']);
+		Route::post('themmoi',[TacGiaController::class,'post_add']);
+		Route::get('sua/{id}',[TacGiaController::class,'load_edit']);
+		Route::post('sua/{id}',[TacGiaController::class,'post_edit']);
+		Route::get('xoa/{id}',[TacGiaController::class,'delete_author']);
+		Route::get('search',[TacGiaController::class,'search_live'])->name('search_author');
+		});
+	Route::group(['prefix'=>'truyen'],function(){
+		Route::get('danhsach',[TruyenController::class,'load_list']);
+		Route::get('themmoi',[TruyenController::class,'load_add']);
+		Route::post('themmoi',[TruyenController::class,'post_add'])->name('add_story');
+		Route::get('sua/{id}',[TruyenController::class,'load_edit']);
+
 	});
 });
