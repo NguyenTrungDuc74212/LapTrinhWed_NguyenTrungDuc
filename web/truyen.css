@@ -130,9 +130,14 @@ input.form-control:focus{
     z-index: 1000;
 
 }
+hr.cach-theloai {
+    position: relative;
+    bottom: -5px;
+}
 .theloai
 {
     position: relative;
+    bottom: -6px;
 }
 .theloai_thongbao_item:hover{
     box-shadow: none !important;
