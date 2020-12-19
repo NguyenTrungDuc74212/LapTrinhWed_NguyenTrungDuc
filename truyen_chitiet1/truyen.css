@@ -44,12 +44,12 @@ input.form-control:focus{
 	background-color: #a09705;
 	transition: all 0.4s ease-in-out;
 }
-.menu-2 a {
+.menu-2 .nav-link{
     color: #615c5c;
     text-transform: uppercase;  
     transition: all 0.3s ease-in-out;
 }
-.menu-2 a:hover{
+.menu-2 .nav-link:hover{
 	box-shadow: 4px 1px 5px #776e6e, -4px 1px 5px #776e6e;
 	transition: all 0.3s ease-in-out;
 }
@@ -60,7 +60,6 @@ input.form-control:focus{
 .col-lg-3.sapxep-tab {
     /*box-shadow: 2px 4px 10px #170e00;*/
     padding: 1px;
-    height: 300px;
     transition:0.4s;
     transform: translateX(20px);
 }
@@ -103,20 +102,19 @@ input.form-control:focus{
 .theloai_thongbao {
     position: absolute;
     background-color: white;
-    min-width: 380px;
-    height: 200px;
+    width: 380px;
+    /*height: 200px;*/
     top:57px;
     display: none;
     opacity: 0;
-
     transition: 0.5s;
     z-index: 900;
 }
 .theloai_thongbao::before{
     content: "";
     display: block;
-    width: 21%;
-    height: 26px;
+    width: 30%;
+    height: 50px;
     background-color: black;
     opacity: 0;
     position: absolute;
@@ -127,10 +125,22 @@ input.form-control:focus{
     position: absolute;
     list-style: none;
     left: -22px;
-    top: 15px;
+    top: 0px;
+    width: 300px;
     z-index: 1000;
-
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
 }
+.theloai_thongbao li{
+    width: 50%;
+    flex-shrink: 0;
+    border-right: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    background-color: white;
+    padding:7px;
+}
+
 hr.cach-theloai {
     position: relative;
     bottom: -5px;
@@ -146,9 +156,7 @@ hr.cach-theloai {
     text-transform: none !important;
 
 }
-.theloai_thongbao li {
-    padding: 6px;
-}
+
 .theloai:hover .theloai_thongbao
 {
     display: block;
@@ -162,7 +170,62 @@ hr.cach-theloai {
     padding: 20px;
     background-color: white;
 }
+.binhluan-form textarea {
+    width: 100%;
+    height: 70px;
+    padding: 10px;
+    background: #f2f2f2;
+    font-family: initial;
+}
+.repcm{
+      width: 100%;
+    height: 70px;
+    padding: 10px;
+    background: #f2f2f2;
+    font-family: initial;
+}
+.binhluan-list{
+    padding: 0;
+}
+.binhluan-ten
+{
+    font-family: initial;
+}
+.binhluan-email
+{
+   font-family: initial;
+    margin: 20px 0px;
+}
+li.binhluan.clearfix {
+    list-style: none;
+    padding: 20px 0px;
+}
+.user-info{
+    display: flex;
+}
+.user-info_ten
+{
+    margin: 0px 20px;
+    color: #177ed0;
+}
+.user-info_ten:hover{
+    text-decoration: none;
+    color: #177ed0;
+}
+span.ngay {
+    font-family: auto;
+    font-size: 13px;
+}
+p.mess {
+    font-family: initial;
+    margin: 0px 20px;
+}
+.like{
+    color: #e63535;
+    margin-left: 5px;
+}
 /*end cột trái*/
+
 
 /*top truyện hay*/
 .stt-item {
@@ -204,10 +267,8 @@ footer.footer {
     color: white;
     padding: 30px;
    width: 100%;
-   position: fixed;
-   bottom: 0;
-   opacity: 0;
-   display: none;
+ 
+ 
 
 }
 i.fab.fa-facebook-f {
