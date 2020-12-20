@@ -108,10 +108,8 @@
   					<hr>
   					<div class="truyen-phai_info">
   						Truyện ngắn Chí Phèo, nguyên có tên là Cái lò gạch cũ; khi in thành sách lần đầu năm 1941, Nhà Xuất bản Đời mới – Hà Nội tự ý đổi tên là Đôi lứa xứng đôi. Đến khi in lại trong tập Luống cày (do Hội Văn hóa cứu quốc xuất bản, Hà Nội, 1946), Nam Cao đặt lại tên là Chí Phèo.[1]
-
 Nam Cao bắt đầu sáng tác từ năm 1936, nhưng đến tác phẩm Chí Phèo, nhà văn mới khẳng định được tài năng của mình. Chí Phèo là một kiệt tác trong văn xuôi Việt Nam hiện đại, một truyện ngắn có giá trị hiện thực và nhân đạo sâu sắc, mới mẻ, chứng tỏ trình độ nghệ thuật bậc thầy của một nhà văn lớn
-<p>
-Thời gian 1941–1944 là thời sáng tác sung mãn và có hiệu quả nhất trong đời viết văn của Nam Cao. Cố nhiên ngòi bút viết văn của Nam Cao không đạt kỷ lục nào về số lượng, về độ dài hay độ dày. Cái mà ông đạt tới đỉnh cao là chất lượng mới: chất lượng ngôn ngữ nghệ thuật, chất lượng tư duy xã hội và tư duy văn học. Tác phẩm Chí Phèo được phát hành đầu năm 1941 trong tạp chí Đời Mới, cho thấy tài năng của Nam Cao, thể hiện giá trị vô cùng sâu sắc về Chí Phèo.</p>
+Thời gian 1941–1944 là thời sáng tác sung mãn và có hiệu quả nhất trong đời viết văn của Nam Cao. Cố nhiên ngòi bút viết văn của Nam Cao không đạt kỷ lục nào về số lượng, về độ dài hay độ dày. Cái mà ông đạt tới đỉnh cao là chất lượng mới: chất lượng ngôn ngữ nghệ thuật, chất lượng tư duy xã hội và tư duy văn học. Tác phẩm Chí Phèo được phát hành đầu năm 1941 trong tạp chí Đời Mới, cho thấy tài năng của Nam Cao, thể hiện giá trị vô cùng sâu sắc về Chí Phèo.
   					</div>
   					<div class="nut-xemthem text-center">
   					     <a href="" class="nut-rutgon_a">Rút Gọn</a>
@@ -341,24 +339,27 @@ Thời gian 1941–1944 là thời sáng tác sung mãn và có hiệu quả nh�
 		});
 		/*rút gọn*/
          $(document).ready(function() {
-         	$('.truyen-phai_info p').hide();
          	$('.nut-rutgon_a').hide();
-         	$('.nut-rutgon_a').click(function() {
-         		$('.truyen-phai_info p').toggle(400);
-         		$(this).hide();
-         		// $(this).css('display', 'none');
-         		$('.nut-xemthem_a').css('display', 'block');
-         		return false;
-         	});
-
          	$('.nut-xemthem_a').click(function() {
-         		$('.truyen-phai_info p').toggle(400);
+         		$('.truyen-phai_info').toggleClass('add-h');
          		$(this).hide();
-         		// $('.nut-rutgon_a').css('display', 'block');
          		$('.nut-rutgon_a').show();
          		return false;
          	});
+
+         	$('.nut-rutgon_a').click(function(){
+         		$('.truyen-phai_info').toggleClass('add-h');
+         		$(this).hide();
+         		$('.nut-xemthem_a').show();
+         		return false;
+         	});
          });
+
+
+
+
+
+
 		/*end rút gọn*/
 		/*bình luận*/
 		$(document).ready(function() {

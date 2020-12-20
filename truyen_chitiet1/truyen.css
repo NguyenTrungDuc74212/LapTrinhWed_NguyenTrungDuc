@@ -224,6 +224,14 @@ p.mess {
     color: #e63535;
     margin-left: 5px;
 }
+.truyen-phai_info{
+    overflow: hidden;
+    height: 147px;
+    transition: 0.4s;
+}
+.add-h{
+    height: 323px;
+}
 /*end cột trái*/
 
 
