@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
- use Hash;
+use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     //
@@ -20,10 +20,12 @@ class LoginController extends Controller
     }
     private static function get_data($username,$pass)
     {
-    	$user=User::where('name','=',$username)->where('level','=',2)->first();
+        $arr_level ="2,3";
+        $arr_level = explode(',', $arr_level);
+    	$user=User::where('name','=',$username)->whereIn('level',$arr_level)->first();
     	if(!$user) return false;
     	//Hash::check($pass, $user->password)
-    	if($pass== $user->password)
+    	if(Hash::check($pass, $user->password))
     	{
     		return $user;
     	}else{
@@ -37,7 +39,7 @@ class LoginController extends Controller
     		return redirect()->route('login_admin')->with('thatbai','Đăng nhập thất bại!');
     	}else{
     		Session::put('admin',$user);
-    		return redirect()->route('list_cate');// sua lai trang dau tien load khi login
+    		return redirect()->route('dashboard');// sua lai trang dau tien load khi login
     	}
     }
 }

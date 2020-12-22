@@ -110,3 +110,8 @@ button.btn.btn-success {
     pointer-events: none;
     background-color: #8080809e;
 }
+div#noidung {
+    margin-top: 20px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}

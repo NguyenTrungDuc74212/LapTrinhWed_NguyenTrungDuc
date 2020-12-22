@@ -10,14 +10,6 @@ class TheloaiController extends Controller
 {
     //phan construct nay sẽ để trong controller của page được load đầu tiên
     // để khởi tạo session phân trang luôn
-     public function __construct()
-    {
-       if(!Session::has('paginate'))
-       {
-       		Session::put('paginate', 2);
-       }
-    }
-  
       public function list_category()
     {
     	

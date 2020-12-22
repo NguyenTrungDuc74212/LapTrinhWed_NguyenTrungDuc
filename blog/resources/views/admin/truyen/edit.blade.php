@@ -18,11 +18,11 @@
                       {{session('thongbao')}}
                     </div>
                   @endif
-                  <form action="{{route('add_story')}}" method="post" enctype="multipart/form-data">
+                  <form action="admin/truyen/sua/{{$truyen->id}}" method="post" enctype="multipart/form-data">
                      <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                           <label for="">Tên truyện</label>
-                          <input type="text" class="form-control" id="" value="{{$truyen->tentruyen}}">
+                          <input type="text" class="form-control" id="" value="{{$truyen->tentruyen}}" name="TenTruyen">
                         </div> 
                        
                          <fieldset class="form-group">

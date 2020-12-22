@@ -9,7 +9,7 @@ class tacgia extends Model
 {
     use HasFactory;
     protected $table="tacgia";
-    protected function  truyen()
+    protected function truyen()
     {
     	return $this->hasMany('App\Models\truyen','id_tacgia','id');
     }

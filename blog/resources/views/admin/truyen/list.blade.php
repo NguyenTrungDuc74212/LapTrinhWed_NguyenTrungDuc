@@ -15,6 +15,11 @@
                <hr>
                <div class="row">
                   <div class="col-lg-6">
+                    @if(session('thongbao'))
+                      <div class="alert alert-danger">
+                        {{session('thongbao')}}
+                      </div>
+                    @endif
                    <div class="btn-group">
                      <button type="button" class="btn btn-default card">Hiển thị</button>
                      <button type="button" class="btn btn-primary|secondary|success|danger|warning|info|light|dark btn-lg|btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,20 +62,20 @@
         <tr>
        <td align="center">
           <a class="btn btn-primary" href="admin/truyen/sua/{{$tr->id}}"><em class="fas fa-pencil-alt"></em></a>
-          <a class="btn btn-danger" href="admin/truyen/xoa/{{$tr->id}}"><em class="fa fa-trash"></em></a>
-          <a class="btn btn-success" href="admin/truyen/danhsachchuong/{{$tr->id}}"><em class="fa fa-book"></em></a>
+          <a class="btn btn-danger" onclick="return confirm('Có thể bạn sẽ xóa toàn bộ chương thuộc truyện này!')" href="admin/truyen/xoa/{{$tr->id}}"><em class="fa fa-trash"></em></a>
+          <a class="btn btn-success" href="admin/chuong/danhsach/{{$tr->id}}/{{$tr->tenkhongdau}}.html"><em class="fa fa-book"></em></a>
        </td> 
        <td class="hidden-xs"><b><i>{{$tr->tentruyen}}</i></b>
         @if($tr->trangthai==1)
-          <span class="badge badge-danger">Chưa hoàn thành</span>
+          <span class="badge badge-danger">Chưa xong</span>
           @else
-          <span class="badge badge-success">Hoàn thành</span>
+          <span class="badge badge-success">Đã xong</span>
           @endif
        </td> 
-       <td>{{$tr->theloaitruyen->tentheloai}}</td> 
-       <td>{{$tr->tacgia->ten}}</td>
-       <td>{{$tr->user->name}}</td>
-       <td>{{$tr->chuong->count()}}</td>
+       <td>{{$tr->tentheloai}}</td> 
+       <td>{{$tr->tentacgia}}</td>
+       <td>{{$tr->name}}</td>
+       <td>{{$tr->sochuong}}</td>
       </tr>
       @endforeach
      </tbody></table> 
@@ -78,7 +83,7 @@
     <div class="panel-footer card bg-light"> 
      <div class="row"> 
       <div class="col col-xs-4 text-left"><p id="count_page">Hiển thị {{$truyen->currentPage()}} của {{$truyen->lastPage()}}</p></div> 
-      <div class="col col-xs-8 text-right"> 
+      <div class="col col-xs-8 text-right pagin"> 
        {{$truyen->links()}}
        </ul>   
       </div> 
@@ -90,3 +95,66 @@
 </div> <!-- end chuyenmuc -->
 </div>
 @endsection
+@section('script')
+<script>
+  $(document).ready(function(){
+    search_live();
+    function search_live(query='')
+  {
+      $.ajax({
+        url:"{{route('search_story')}}",
+        method:'GET',
+        data:{query:query},
+        dataType:'json',
+        success:function(data)
+        {
+          $('tbody').html(data.data_table);
+          $('#count_page').html(data.count_page);
+          $('.pagin').html(data.links);
+        }
+       })
+      
+  }
+  $(document).on('keyup','#search',function(){
+    if($('#search').val()=='')
+      {
+        location.reload();
+      }else{
+        search_live($('#search').val());
+      }
+    
+  });
+});
+  
+</script>
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
