@@ -30,7 +30,7 @@
                           <select name="TheLoaiTruyen" class="form-control">
                              <option value="" hidden>Thể loại truyện</option>
                             @foreach($TheLoaiTruyen as $tlt)
-                          <option value="{{$tlt->id}}">{{$tlt->tentheloai}}</option>
+                          <option value="{{$tlt->id}}">{{$tlt->tentheloai}}-{{$tlt->theloai->tentheloai}}</option>
                           @endforeach
                         </select>
                         </fieldset>

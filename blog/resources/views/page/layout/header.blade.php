@@ -43,13 +43,13 @@
 		    <a class="nav-link active" href="trangchu">Trang chủ</a>
 		  </li>
 		  <li class="nav-item theloai">
-		    <a class="nav-link" href="#">Thể loại</a>
+		    <a class="nav-link" href="javascript:void(0)">Thể loại</a>
 		    <div class="theloai_thongbao thu">
 		    	
 		    				<ul class="text-center">
 		    					 @foreach($data['theloai'] as $tl)
 					    		<li>
-					    			<a href="" class="theloai_thongbao_item">{{$tl->tentheloai}}</a>
+					    			<a href="timkiem?key={{convert_str_to_key($tl->tentheloai)}}" class="theloai_thongbao_item">{{$tl->tentheloai}}</a>
 					    		</li>
 					    		@endforeach
 		    				</ul>
@@ -58,7 +58,7 @@
 		  </li>
 		  @foreach($data['theloai'] as $tl)
 		  <li class="nav-item theloai">
-		    <a class="nav-link" href="#">{{$tl->tentheloai}}</a>
+		    <a class="nav-link" href="timkiem?key={{convert_str_to_key($tl->tentheloai)}}">{{$tl->tentheloai}}</a>
 		    @if(count($tl->theloaitruyen)>0)
 		    @foreach($tl->theloaitruyen as $tlt)
 		    <div class="theloai_thongbao thu">
@@ -66,7 +66,7 @@
 		    				<ul class="text-center">
 		    					 @foreach($tl->theloaitruyen as $tlt)
 					    		<li>
-					    			<a href="" class="theloai_thongbao_item">{{$tlt->tentheloai}}</a>
+					    			<a href="theloai/{{$tlt->id}}/{{$tlt->tenkhongdau}}.html" class="theloai_thongbao_item">{{$tlt->tentheloai}}</a>
 					    		</li>
 					    		@endforeach
 		    				</ul>
@@ -78,13 +78,15 @@
 		  @endforeach
 		  @if(session('user'))
 		   <li class="nav-item theloai">
-		    <a class="nav-link" href="#"><i class="fas fa-user"></i>
+		    <a class="nav-link" href="javascript:void(0)"><i class="fas fa-user"></i>
 		    {{session('user')['name']}}</a>
 		    <div class="theloai_thongbao thu">
-		    	
 		    				<ul class="text-center">
 					    		<li>
-					    			<a href="dangxuat">Đăng xuất</a>
+					    			<a href="dangxuat"  class="theloai_thongbao_item">Đăng xuất</a>
+					    		</li>
+					    		<li>
+					    			<a data-toggle="modal" id="link_modan3" data-target="#myModal3"  class="theloai_thongbao_item">Đang đọc</a>
 					    		</li>
 		    				</ul>
 		    			</div>
@@ -92,16 +94,17 @@
 		  </li>
 		  @else
 		   <li class="nav-item theloai">
-		    <a class="nav-link" href="#"><i class="fas fa-user"></i>
+		    <a class="nav-link" href="javascript:void(0)"><i class="fas fa-user"></i>
 		    Thành Viên</a>
 		    <div class="theloai_thongbao thu">
 		    
 		    				<ul class="text-center">
 					    		<li>
-					    			<a data-toggle="modal" id="link_modan1" data-target="#myModal">Đăng nhập</a>
+					    			<a data-toggle="modal" id="link_modan1" data-target="#myModal" class="theloai_thongbao_item">Đăng nhập</a>
 					    		</li>
 					    		<li>
-					    			<a data-toggle="modal" id="link_modan2" data-target="#myModal2">Đăng ký</a>
+					    			<a data-toggle="modal" id="link_modan2" data-target="#myModal2" class="theloai_thongbao_item"
+					    			>Đăng ký</a>
 					    		</li>
 		    				</ul>
 		    	

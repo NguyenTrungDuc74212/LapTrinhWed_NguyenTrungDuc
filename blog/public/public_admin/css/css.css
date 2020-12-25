@@ -20,6 +20,7 @@
     min-width: 293px;
     max-width: 293px;
     z-index: 100;
+    position: fixed;
 }
 a.tieude{
       margin: 0px -18px;

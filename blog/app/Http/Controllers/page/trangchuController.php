@@ -8,11 +8,15 @@ use App\Models\truyen;
 
 class trangchuController extends Controller
 {
-    //
+    //load_default
+     public function load_default()
+    {	
+    	return redirect()->route('trangchu');
+    }
     public function load_homepage()
     {	
     	$top_truyen=truyen::orderBy('luotxem', 'desc')->take(6)->get();
-    	$truyen_moi=truyen::where('luotxem','=',0)->take(6)->get();
+    	$truyen_moi=truyen::orderBy('luotxem', 'asc')->take(6)->get();
     	return view('page.trangchu',['top_truyen'=>$top_truyen,'truyen_moi'=>$truyen_moi]);
     }
 }
